@@ -1,0 +1,79 @@
+<html>
+<head>
+</head>
+<body>
+	<div id="displayId">
+	</div>
+</body>
+<script>
+var obj = [{
+	"department":"comp",
+	"student":[{
+				"name" : "hamid",
+				"age" : 24
+				},
+				{
+					"name":"ataul",
+					"age":24
+				},
+				{
+					"name":"saifio",
+					"age":""
+				}]
+
+},
+{
+	"department":"mech",
+	"student":[{
+				"name" : "hamid",
+				"age" : 24
+				},
+				{
+					"name":"ataul",
+					"age":24
+				},
+				{
+					"name":"saifio",
+					"age":""
+				}
+	]
+}];
+//---------------------------------------------
+var names = ["hamid","ataul","saifio"];
+localStorage.setItem("myNames",names);
+names.forEach(function(data){
+	var para = document.createElement("p");
+	var node = document.createTextNode(data);
+	para.appendChild(node);
+	var element = document.getElementById("displayId");
+	// element.innerHTML = para;
+	element.appendChild(para);
+});
+
+//---------------------------------------------
+var myObj = {};
+myObj.name = "hamid";
+myObj.age = 24;
+// myObj.name = "saifio";
+var myOBj1=JSON.stringify(myObj);
+localStorage.setItem("myObj",myOBj1);
+
+var aValue = localStorage.getItem("myObj");
+var getLocal = JSON.parse(aValue);
+console.log(getLocal);
+
+
+//-----------------------------------------------------
+var myArray = new Array();
+var str = new String();
+console.log(obj);
+console.log(JSON.parse(JSON.stringify(obj)));
+
+// console.log("obj",typeof obj);
+// console.log("myArray",typeof myArray);
+// console.log("str",typeof str);
+// console.log(str instanceof String);
+
+
+</script>
+</html>

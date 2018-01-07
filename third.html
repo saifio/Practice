@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js Hero</title>
+		<script type="text/javascript" src="Student.js"></script>
+
+
+	<script>
+	
+	var stud1 = new Student();
+var obj1 = {};
+obj1.name = "Saif";
+obj1.contactNumber = 9762390190;
+obj1.age = 23;
+obj1.pinCode = 421302;
+
+
+var obj2 = {};
+obj2.name = "hamid";
+obj2.contactNumber = 9821671797;
+obj2.age = 24;
+obj2.pinCode = 421302;
+
+
+var obj3 = {};
+obj3.name = "ataul";
+obj3.contactNumber = 6432535441;
+obj3.age = 23;
+obj3.pinCode = 000070;
+
+var obj4 = {};
+obj4.name = "hero";
+obj4.contactNumber = 6432535441;
+obj4.age = 25;
+obj4.pinCode = 000070;
+
+var obj5 = {};
+obj5.name = "akash";
+obj5.contactNumber = 6432535441;
+obj5.age = 27;
+obj5.pinCode = 000070;
+
+var list = [];
+for(var i=0;i<2;i++){
+	var firstName = prompt("Enter firstName");
+	var lastName = prompt("Enter lastName");
+	var department = prompt("department ");
+	var address = prompt("address ");
+	var age = prompt("age ");
+	list.push(new Student(firstName,lastName,age,address,department))
+}
+console.log(list);
+var details = [obj1,obj2,obj3,obj4,obj5];
+// details.push(obj);
+// details["hamid_1"]=obj2;
+// details["saif_1"]=obj1;
+// details["ataul_1"]=obj3;
+// or
+
+
+for (var i = 0; i < details.length; i++) {
+	console.log(details[i].name +" "+details[i].contactNumber+" "+details[i].age);
+	
+}
+
+var invalidEntries = 0;
+// function isNumber(obj) {
+//   return obj!== undefined && typeof(obj) === 'number' && !isNaN(obj);
+// }
+
+function filterByID(item) {
+  if (item.age>23) {
+    return true;
+  } 
+  invalidEntries++;
+  return false; 
+}
+
+var arrByID = details.filter(filterByID);
+console.log('Filtered Array  of objeetc details\n', arrByID); 
+// Filtered Array
+// [{ id: 15 }, { id: -1 }, { id: 0 }, { id: 3 }, { id: 12.2 }]
+
+// console.log('Number of Invalid Entries = ', invalidEntries); 
+// Number of Invalid Entries = 4
+
+// var filter = {key:23};
+// details = details.filter(function(item) {
+//     for(var key in details) {
+//         if( item[key] != filter[key])
+//             return false;
+//     }
+//     return true;
+// });
+
+</script>
+</head>
+<body>
+
+
+
+</body>
+</html>

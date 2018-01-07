@@ -9,23 +9,78 @@
 		
 		
 		
-		alert('hey dear');
+		// alert('hey dear');
 	</script>
 </head>
 <body>
-<p id="demo"></p>
 
-<p id="demo1">haixdiyo</p>
 
-<p id="demo2">saifio</p>
+<!-- <p>With the debugger turned on, the code below should stop executing before it executes the third line.</p> -->
 
-<p>With the debugger turned on, the code below should stop executing before it executes the third line.</p>
 
 
 <script>
-var x = 15 * 5;
-debugger;
-document.getElementById("demo").innerHTML = x;
+
+var Person = function(name) {
+  this.name = name;
+  this.canTalk = true;
+};
+
+Person.prototype.greet = function() {
+  if (this.canTalk) {
+    console.log('Hi, I am ' + this.name);
+  }
+};
+
+var Employee = function(name, title) {
+  Person.call(this, name);
+  this.title = title;
+};
+
+Employee.prototype = Object.create(Person.prototype);
+Employee.prototype.constructor = Employee;
+
+Employee.prototype.greet = function() {
+  if (this.canTalk) {
+    console.log('Hi, I am ' + this.name + ', the ' + this.title);
+  }
+};
+
+var Customer = function(name) {
+  Person.call(this, name);
+};
+
+Customer.prototype = Object.create(Person.prototype);
+Customer.prototype.constructor = Customer;
+
+var Mime = function(name) {
+  Person.call(this, name);
+  this.canTalk = false;
+};
+
+Mime.prototype = Object.create(Person.prototype);
+Mime.prototype.constructor = Mime;
+
+var bob = new Employee('Bob', 'Builder');
+var joe = new Customer('Joe');
+var rg = new Employee('Red Green', 'Handyman');
+var mike = new Customer('Mike');
+var mime = new Mime('Mime');
+
+bob.greet();
+// Hi, I am Bob, the Builder
+
+joe.greet();
+// Hi, I am Joe
+
+rg.greet();
+// Hi, I am Red Green, the Handyman
+
+mike.greet();
+// Hi, I am Mike
+
+mime.greet();
+
 </script>
 </body>
 </html>
